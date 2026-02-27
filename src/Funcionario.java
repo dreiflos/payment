@@ -1,16 +1,16 @@
-import java.util.*;
+import java.time.LocalDate;
 
 public class Funcionario {
     private String primeiroNome;
     private String segundoNome;
     private String contaBancaria;
     private String endereco;
-    private Date dataEntrada;
-    private Date dataSaida;
-    private Date dataNascimento;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
+    private LocalDate dataNascimento;
 
-    public Funcionario(String primeiroNome, String segundoNome, String contaBancaria, String endereco, Date dataEntrada,
-                       Date dataSaida, Date dataNascimento) {
+    public Funcionario(String primeiroNome, String segundoNome, String contaBancaria, String endereco, LocalDate dataEntrada,
+                       LocalDate dataSaida, LocalDate dataNascimento) {
         this.primeiroNome = primeiroNome;
         this.segundoNome = segundoNome;
         this.endereco = endereco;
@@ -52,27 +52,27 @@ public class Funcionario {
         this.endereco = endereco;
     }
 
-    public Date getDataEntrada() {
+    public LocalDate getDataEntrada() {
         return dataEntrada;
     }
 
-    public void setDataEntrada(Date dataEntrada) {
+    public void setDataEntrada(LocalDate dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
 
-    public Date getDataSaida() {
+    public LocalDate getDataSaida() {
         return dataSaida;
     }
 
-    public void setDataSaida(Date dataSaida) {
+    public void setDataSaida(LocalDate dataSaida) {
         this.dataSaida = dataSaida;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 }

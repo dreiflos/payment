@@ -1,17 +1,9 @@
-public class Imposto {
-
-    public double calcular (double salario) {
-        double salarioComDesconto = 0.0;
-
-        if(salario<= 1412) {
-            salarioComDesconto = salario * 0.075;
-        } else if (salario > 1412 && salario<= 2666.68) {
-            salarioComDesconto = salario * 0.09;
-        } else if (salario > 2666.68 && salario < 4000.03) {
-            salarioComDesconto = salario * 0.12;
-        } else if (salario > 4000.03){
-            salarioComDesconto = salario * 0.14;
-        }
-        return salarioComDesconto;
+public class Imposto implements CalculadorImposto {
+    @Override
+    public double calcular(double salarioBruto) {
+        if (salarioBruto <= 1412) return salarioBruto * 0.075;
+        if (salarioBruto <= 2666.68) return salarioBruto * 0.09;
+        if (salarioBruto <= 4000.03) return salarioBruto * 0.12;
+        return salarioBruto * 0.14;
     }
 }
