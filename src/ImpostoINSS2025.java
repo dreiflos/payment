@@ -1,4 +1,4 @@
-public class Imposto2025 implements CalculadorImposto {
+public class ImpostoINSS2025 implements CalculadorImposto {
     private static final double faixa1 = 1518.00;
     private static final double faixa2 = 2793.88;
     private static final double faixa3 = 4190.83;

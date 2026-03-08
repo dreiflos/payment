@@ -1,8 +1,10 @@
 public class FolhaPagamento {
-    private final CalculadorImposto calculadorImposto;
+    private final CalculadorImposto calculadorINSS;
+    private final CalculadorImposto calculadorIRPF;
 
-    public FolhaPagamento(CalculadorImposto calculadorImposto) {
-        this.calculadorImposto = calculadorImposto;
+    public FolhaPagamento(CalculadorImposto calculadorINSS, CalculadorImposto calculadorIRPF) {
+        this.calculadorINSS = calculadorINSS;
+        this.calculadorIRPF = calculadorIRPF;
     }
 
     public Holerite gerar(Funcionario funcionario, Cargo cargo, Hora horasMes) {
@@ -11,8 +13,11 @@ public class FolhaPagamento {
         double valorFaltas = horasMes.getHorasFaltantes() * valorHora;
 
         double bruto = cargo.getSalario() + valorExtras - valorFaltas;
-        double imposto = calculadorImposto.calcular(bruto);
 
-        return new Holerite(funcionario, cargo, bruto, imposto, (bruto - imposto));
+        double inss = calculadorINSS.calcular(bruto);
+        double baseIRPF = bruto - inss;
+        double irpf = calculadorIRPF.calcular(baseIRPF);
+
+        return new Holerite(funcionario, cargo, bruto, inss, irpf, (bruto - inss - irpf));
     }
 }

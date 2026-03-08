@@ -1,40 +1,61 @@
-import java.time.LocalDate;
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
-        Scanner leitor = new Scanner(System.in);
 
-        System.out.print("Digite o primeiro nome do funcionário: ");
-        String nomeDigitado = leitor.nextLine();
-        System.out.print("Digite o sobrenome do funcionário: ");
-        String sobrenomeDigitado = leitor.nextLine();
+        CadFuncionario cadFuncionario = new CadFuncionario();
+        CadCargo cadCargo = new CadCargo();
 
-        Funcionario func1 = new Funcionario(
-                nomeDigitado,
-                sobrenomeDigitado,
-                "3333-33",
-                "rua jasmin",
-                LocalDate.now(),
-                null,
-                LocalDate.of(1990, 5, 20)
-        );
+        Cargo cargoAndrei = cadCargo.consultaNome("Desenvolvedor Java JR");
+        Funcionario andrei = cadFuncionario.consultaNome("Andrei");
 
-        Cargo cargoFunc1 = new Cargo(3000.00, "Dev", "desenvolvimento", 230.00);
-        Hora hora1 = new Hora(15.0, 5.0);
+        LancarHoras horasAndrei = new LancarHoras();
+        horasAndrei.lancar(10.0, 0.0);
+        horasAndrei.lancar(0.0, 3.0);
+        Hora horaAndrei = new Hora(horasAndrei.getHorasExtras(), horasAndrei.getHorasFaltantes());
 
-
-        CalculadorImposto calculadorInss = new Imposto();
-
-        FolhaPagamento folhaPagamento = new FolhaPagamento(calculadorInss);
-
-        Holerite resultado = folhaPagamento.gerar(func1, cargoFunc1, hora1);
-
+        FolhaPagamento folhaAndrei = new FolhaPagamento(new ImpostoINSS2025(), new ImpostoIRPF2025());
+        Holerite holAndrei = folhaAndrei.gerar(andrei, cargoAndrei, horaAndrei);
 
         SaidaRelatorio relatorio = new SaidaRelatorio();
-        relatorio.imprimir(resultado);
+        relatorio.imprimir(holAndrei);
 
-        leitor.close();
+
+        Cargo cargoGustavo = cadCargo.consultaNome("Suporte Técnico");
+        Funcionario gustavo = cadFuncionario.consultaNome("Gustavo");
+
+        LancarHoras horasGustavo = new LancarHoras();
+        horasGustavo.lancar(5.0, 2.0);
+        Hora horaGustavo = new Hora(horasGustavo.getHorasExtras(), horasGustavo.getHorasFaltantes());
+
+        FolhaPagamento folhaGustavo = new FolhaPagamento(new ImpostoINSS2026(), new ImpostoIRPF2026());
+        Holerite holGustavo = folhaGustavo.gerar(gustavo, cargoGustavo, horaGustavo);
+
+        relatorio.imprimir(holGustavo);
+
+
+        Cargo cargoAnthony = cadCargo.consultaNome("Administrativo");
+        Funcionario anthony = cadFuncionario.consultaNome("Anthony");
+
+        LancarHoras horasAnthony = new LancarHoras();
+        horasAnthony.lancar(0.0, 8.0);
+        Hora horaAnthony = new Hora(horasAnthony.getHorasExtras(), horasAnthony.getHorasFaltantes());
+
+        FolhaPagamento folhaAnthony = new FolhaPagamento(new ImpostoINSS2025(), new ImpostoIRPF2025());
+        Holerite holAnthony = folhaAnthony.gerar(anthony, cargoAnthony, horaAnthony);
+
+        relatorio.imprimir(holAnthony);
+
+
+        Cargo cargoJhonny = cadCargo.consultaNome("Auxiliar");
+        Funcionario jhonny = cadFuncionario.consultaNome("Jhonny");
+
+        LancarHoras horasJhonny = new LancarHoras();
+        horasJhonny.lancar(20.0, 0.0);
+        Hora horaJhonny = new Hora(horasJhonny.getHorasExtras(), horasJhonny.getHorasFaltantes());
+
+        FolhaPagamento folhaJhonny = new FolhaPagamento(new ImpostoINSS2026(), new ImpostoIRPF2026());
+        Holerite holJhonny = folhaJhonny.gerar(jhonny, cargoJhonny, horaJhonny);
+
+        relatorio.imprimir(holJhonny);
     }
 }
