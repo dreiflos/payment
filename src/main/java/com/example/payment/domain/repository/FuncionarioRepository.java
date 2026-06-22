@@ -9,4 +9,6 @@ public interface FuncionarioRepository {
     Optional<Funcionario> buscarPorPrimeiroNome(String nome);
 
     List<Funcionario> listarTodos();
+
+    Funcionario salvar(Funcionario funcionario);
 }

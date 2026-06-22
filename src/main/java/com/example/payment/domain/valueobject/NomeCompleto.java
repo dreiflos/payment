@@ -32,6 +32,10 @@ public final class NomeCompleto {
         return primeiro;
     }
 
+    public String segundo() {
+        return segundo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

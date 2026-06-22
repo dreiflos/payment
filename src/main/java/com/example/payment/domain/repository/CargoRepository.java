@@ -9,4 +9,6 @@ public interface CargoRepository {
     Optional<Cargo> buscarPorNome(String nome);
 
     List<Cargo> listarTodos();
+
+    Cargo salvar(Cargo cargo);
 }
